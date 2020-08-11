@@ -42,8 +42,8 @@ public abstract class WirelessTerminal extends SimpleSlimefunItem<ItemUseHandler
                 Block b = e.getClickedBlock().get();
 
                 if (e.getSlimefunBlock().get() instanceof AccessTerminal) {
-                    lore.set(0, ChatColors.color("&8\u21E8 &7Linked to: &8") + b.getWorld().getName() + " X: " + b.getX() + " Y: " + b.getY() + " Z: " + b.getZ());
-                    p.sendMessage(ChatColors.color("&bLink established!"));
+                    lore.set(0, ChatColors.color("&8\u21E8 &7連結至: &8") + b.getWorld().getName() + " X: " + b.getX() + " Y: " + b.getY() + " Z: " + b.getZ());
+                    p.sendMessage(ChatColors.color("&b已建立連結!"));
                     im.setLore(lore);
                     stack.setItemMeta(im);
                     p.getInventory().setItemInMainHand(stack);
@@ -61,16 +61,16 @@ public abstract class WirelessTerminal extends SimpleSlimefunItem<ItemUseHandler
     }
 
     private void openRemoteTerminal(Player p, ItemStack stack, String loc, int range) {
-        if (loc.equals(ChatColors.color("&8\u21E8 &7Linked to: &cNowhere"))) {
-            p.sendMessage(ChatColors.color("&4Failed &c- This Device has not been linked to a Chest Terminal!"));
+        if (loc.equals(ChatColors.color("&8\u21E8 &7連結至: &c無處"))) {
+            p.sendMessage(ChatColors.color("&4失敗 &c- 此裝置未正確的連接至箱子終端!"));
             return;
         }
 
-        loc = loc.replace(ChatColors.color("&8\u21E8 &7Linked to: &8"), "");
+        loc = loc.replace(ChatColors.color("&8\u21E8 &7連結至: &8"), "");
         World world = Bukkit.getWorld(loc.split(" X: ")[0]);
 
         if (world == null) {
-            p.sendMessage(ChatColors.color("&4Failed &c- The Chest Terminal that this Device has been linked to no longer exists!"));
+            p.sendMessage(ChatColors.color("&4失敗 &c- 此設備連接至的箱子終端已不存在!"));
             return;
         }
 
@@ -81,22 +81,22 @@ public abstract class WirelessTerminal extends SimpleSlimefunItem<ItemUseHandler
         Block block = world.getBlockAt(x, y, z);
 
         if (!BlockStorage.check(block, "CHEST_TERMINAL")) {
-            p.sendMessage(ChatColors.color("&4Failed &c- The Chest Terminal that this Device has been linked to no longer exists!"));
+            p.sendMessage(ChatColors.color("&4失敗 &c- 此設備連接至的箱子終端已不存在!"));
             return;
         }
 
         float charge = getItemCharge(stack);
         if (charge < 0.5F) {
-            p.sendMessage(ChatColors.color("&4Failed &c- You are out of Energy!"));
+            p.sendMessage(ChatColors.color("&4失敗 &c- 此終端已沒電!"));
             return;
         }
 
         if (range > 0 && !world.getUID().equals(p.getWorld().getUID())) {
-            p.sendMessage(ChatColors.color("&4Failed &c- You are out of Range!"));
+            p.sendMessage(ChatColors.color("&4失敗 &c- 你已超出可連線範圍!"));
             return;
         }
         if (range > 0 && block.getLocation().distance(p.getLocation()) > range) {
-            p.sendMessage(ChatColors.color("&4Failed &c- You are out of Range!"));
+            p.sendMessage(ChatColors.color("&4失敗 &c- 你已超出可連線範圍!"));
             return;
         }
 

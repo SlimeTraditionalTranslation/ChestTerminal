@@ -32,7 +32,7 @@ public class AccessTerminal extends SimpleSlimefunItem<BlockTicker> {
     public AccessTerminal(Category category, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
 
-        new BlockMenuPreset(getID(), "&3CT Access Terminal") {
+        new BlockMenuPreset(getID(), "&3終端介面") {
 
             @Override
             public void init() {
@@ -41,7 +41,7 @@ public class AccessTerminal extends SimpleSlimefunItem<BlockTicker> {
 
             @Override
             public void newInstance(BlockMenu menu, Block b) {
-                menu.replaceExistingItem(46, new CustomItem(SlimefunUtils.getCustomHead("f2599bd986659b8ce2c4988525c94e19ddd39fad08a38284a197f1b70675acc"), "&7\u21E6 Previous Page", "", "&c(This may take up to a Second to update)"));
+                menu.replaceExistingItem(46, new CustomItem(SlimefunUtils.getCustomHead("f2599bd986659b8ce2c4988525c94e19ddd39fad08a38284a197f1b70675acc"), "&7\u21E6 上一頁", "", "&c(這可能需要幾秒鐘來更新)"));
                 menu.addMenuClickHandler(46, (p, slot, item, action) -> {
                     int page = Integer.parseInt(BlockStorage.getLocationInfo(b.getLocation(), "page")) - 1;
                     if (page > 0) {
@@ -51,7 +51,7 @@ public class AccessTerminal extends SimpleSlimefunItem<BlockTicker> {
                     return false;
                 });
 
-                menu.replaceExistingItem(50, new CustomItem(SlimefunUtils.getCustomHead("c2f910c47da042e4aa28af6cc81cf48ac6caf37dab35f88db993accb9dfe516"), "&7Next Page \u21E8", "", "&c(This may take up to a Second to update)"));
+                menu.replaceExistingItem(50, new CustomItem(SlimefunUtils.getCustomHead("c2f910c47da042e4aa28af6cc81cf48ac6caf37dab35f88db993accb9dfe516"), "&7下一頁 \u21E8", "", "&c(這可能需要幾秒鐘來更新)"));
                 menu.addMenuClickHandler(50, (p, slot, item, action) -> {
                     int page = Integer.parseInt(BlockStorage.getLocationInfo(b.getLocation(), "page")) + 1;
                     BlockStorage.addBlockInfo(b, "page", String.valueOf(page));
@@ -123,7 +123,7 @@ public class AccessTerminal extends SimpleSlimefunItem<BlockTicker> {
     public BlockTicker getItemHandler() {
         return new BlockTicker() {
 
-            private final ItemStack item = new CustomItem(Material.BARRIER, "&4No Cargo Net connected!");
+            private final ItemStack item = new CustomItem(Material.BARRIER, "&4沒有連接至任何物流網路!");
             private final MenuClickHandler click = (p, slot, stack, action) -> false;
 
             @Override
