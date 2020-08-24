@@ -37,7 +37,7 @@ public class ChestTerminal extends JavaPlugin implements Listener, SlimefunAddon
 
 		if (updater != null && cfg.getBoolean("options.auto-update")) updater.start();
 		
-		SlimefunItemStack milkyQuartz = new SlimefunItemStack("MILKY_QUARTZ", Material.QUARTZ, "&r乳色石英");
+		SlimefunItemStack milkyQuartz = new SlimefunItemStack("MILKY_QUARTZ", Material.QUARTZ, "&f乳色石英");
 		SlimefunItemStack ctPanel = new SlimefunItemStack("CT_PANEL", "7a44ff3a5f49c69cab676bad8d98a063fa78cfa61916fdef3e267557fec18283", "&3CT照明面板", "&7製作零件");
 		
 		SlimefunItemStack chestTerminal = new SlimefunItemStack("CHEST_TERMINAL", "7a44ff3a5f49c69cab676bad8d98a063fa78cfa61916fdef3e267557fec18283", "&3CT 存取終端", "&7如果此方塊連接至", "&7物流網路, 它將允許你使用遠端", "&7互動任何物品", "&7物流節點的頻道設定成箱子終端頻道");
@@ -47,7 +47,7 @@ public class ChestTerminal extends JavaPlugin implements Listener, SlimefunAddon
 		SlimefunItemStack wirelessTerminal16 = new SlimefunItemStack("CT_WIRELESS_ACCESS_TERMINAL_16", Material.ITEM_FRAME, "&3CT 無限存取終端 &b(16)", "&8\u21E8 &7連結至: &c無處", "&8\u21E8 &7範圍: &e16 格", "&c&o&8\u21E8 &e\u26A1 &70 / 10 J", "", "&7如果此模塊鏈接到接入終端", "&7它將能夠遠程訪問該終端", "", "&7&e右鍵點擊訪問終端 &7鏈接", "&7&e右鍵&7來打開連結的終端");
 		SlimefunItemStack wirelessTerminal64 = new SlimefunItemStack("CT_WIRELESS_ACCESS_TERMINAL_64", Material.ITEM_FRAME, "&3CT 無限存取終端 &b(64)", "&8\u21E8 &7連結至: &c無處", "&8\u21E8 &7範圍: &e64 格", "&c&o&8\u21E8 &e\u26A1 &70 / 25 J", "", "&7如果此模塊鏈接到接入終端", "&7它將能夠遠程訪問該終端", "", "&7&e右鍵點擊訪問終端 &7鏈接", "&7&e右鍵&7來打開連結的終端");
 		SlimefunItemStack wirelessTerminal128 = new SlimefunItemStack("CT_WIRELESS_ACCESS_TERMINAL_128", Material.ITEM_FRAME, "&3CT 無限存取終端 &b(128)", "&8\u21E8 &7連結至: &c無處", "&8\u21E8 &7範圍: &e128 格", "&c&o&8\u21E8 &e\u26A1 &70 / 50 J", "", "&7如果此模塊鏈接到接入終端", "&7它將能夠遠程訪問該終端", "", "&7&e右鍵點擊訪問終端 &7鏈接", "&7&e右鍵&7來打開連結的終端");
-		SlimefunItemStack wirelessTerminalTransdimensional = new SlimefunItemStack("CT_WIRELESS_ACCESS_TERMINAL_TRANSDIMENSIONAL", Material.ITEM_FRAME, "&3CT 無限存取終端 &b(Transdimensional)", "&8\u21E8 &7連結至: &c無處", "&8\u21E8 &7範圍: &e無限", "&c&o&8\u21E8 &e\u26A1 &70 / 50 J", "", "&7如果此模塊鏈接到接入終端", "&7它將能夠遠程訪問該終端", "", "&7&e右鍵點擊訪問終端 &7鏈接", "&7&e右鍵&7來打開連結的終端");
+		SlimefunItemStack wirelessTerminalTransdimensional = new SlimefunItemStack("CT_WIRELESS_ACCESS_TERMINAL_TRANSDIMENSIONAL", Material.ITEM_FRAME, "&3CT 無限存取終端 &b(跨維度)", "&8\u21E8 &7連結至: &c無處", "&8\u21E8 &7範圍: &e無限", "&c&o&8\u21E8 &e\u26A1 &70 / 50 J", "", "&7如果此模塊鏈接到接入終端", "&7它將能夠遠程訪問該終端", "", "&7&e右鍵點擊訪問終端 &7鏈接", "&7&e右鍵&7來打開連結的終端");
 		
 		Category category = new Category(new NamespacedKey(this, "chest_terminal"), new CustomItem(chestTerminal, "&5箱子終端", "", "&a> 點擊開啟"));
 		
