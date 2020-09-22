@@ -35,9 +35,9 @@ public class ChestTerminal extends JavaPlugin implements Listener, SlimefunAddon
 		// Setting up the Auto-Updater
 		Updater updater = null;
 
-		if (getDescription().getVersion().startsWith("DEV - ")) {
+		if (getDescription().getVersion().startsWith("V - ")) {
 			// If we are using a development build, we want to switch to our custom 
-			updater = new GitHubBuildsUpdater(this, getFile(), "TheBusyBiscuit/ChestTerminal/master");
+			updater = new GitHubBuildsUpdater(this, getFile(), "xMikux/ChestTerminal/master");
 		}
 
 		if (updater != null && cfg.getBoolean("options.auto-update")) updater.start();
