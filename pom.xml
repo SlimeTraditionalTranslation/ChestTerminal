@@ -109,7 +109,7 @@
             <scope>provided</scope>
             <exclusions>
                 <exclusion>
-                    <groupId>io.github.thebusybiscuit</groupId>
+                    <groupId>io.github.xMikux</groupId>
                     <artifactId>cscorelib2</artifactId>
                 </exclusion>
                 <exclusion>
