@@ -1,6 +1,6 @@
 package io.github.thebusybiscuit.chestterminal;
 
-import org.bstats.bukkit.Metrics;
+//import org.bstats.bukkit.Metrics;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.event.Listener;
@@ -26,7 +26,7 @@ public class ChestTerminal extends JavaPlugin implements Listener, SlimefunAddon
 	public void onEnable() {
 		
 		// Setting up bStats
-		new Metrics(this, 5503);
+		//new Metrics(this, 5503);
 
 		SlimefunItemStack milkyQuartz = new SlimefunItemStack("MILKY_QUARTZ", Material.QUARTZ, "&f乳色石英");
 		SlimefunItemStack ctPanel = new SlimefunItemStack("CT_PANEL", "7a44ff3a5f49c69cab676bad8d98a063fa78cfa61916fdef3e267557fec18283", "&3CT照明面板", "&7製作零件");
@@ -132,6 +132,6 @@ public class ChestTerminal extends JavaPlugin implements Listener, SlimefunAddon
 
 	@Override
 	public String getBugTrackerURL() {
-		return "https://github.com/TheBusyBiscuit/ChestTerminal/issues";
+		return "https://github.com/xMikux/ChestTerminal/issues";
 	}
 }

@@ -4,7 +4,8 @@
 此附加靈感來源於著名的模組[Applied Energistics](https://www.curseforge.com/minecraft/mc-mods/applied-energistics-2).<br>
 它可添加一個箱子終端讓所有連結物流系統上節點設置為CT-Channel可訪問所有物品.
 
-[官方原碼連結](https://github.com/TheBusyBiscuit/ChestTerminal)
+此為**非官方**版本, 請勿在該作者的問題追蹤內回報!
+[原作者連結](https://github.com/TheBusyBiscuit/ChestTerminal)
 
 ## 下載箱子終端
 繁體翻譯版: [構建頁面](https://xmikux.github.io/builds/xMikux/ChestTerminal/master)<br>
