@@ -7,6 +7,10 @@
 此為**非官方**版本, 請勿在該作者的問題追蹤內回報!
 [原作者連結](https://github.com/TheBusyBiscuit/ChestTerminal)
 
+**警告**: 箱子終端可以對於性能造成很大的負擔. 此附加會導致相當大的卡頓, 因此確保在安裝時意識到這點.
+
+[閱讀更多...](https://github.com/TheBusyBiscuit/Slimefun4/wiki/ChestTerminal)
+
 ## 下載箱子終端
 繁體翻譯版: [構建頁面](https://xmikux.github.io/builds/xMikux/ChestTerminal/master)<br>
 官方開發版: [開發版構建頁面](https://thebusybiscuit.github.io/builds/TheBusyBiscuit/ChestTerminal/master/)
