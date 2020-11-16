@@ -3,15 +3,15 @@ package io.github.thebusybiscuit.chestterminal.items;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
 
+import io.github.thebusybiscuit.slimefun4.core.handlers.BlockPlaceHandler;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu.MenuClickHandler;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.Item.CustomItem;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunBlockHandler;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.UnregisterReason;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
@@ -41,8 +41,7 @@ public class ImportBus extends SlimefunItem {
                         newInstance(menu, b);
                         return false;
                     });
-                }
-                else {
+                } else {
                     menu.replaceExistingItem(23, new CustomItem(Material.BLACK_WOOL, "&7類型: &8黑名單", "", "&e> 點擊切換白名單"));
                     menu.addMenuClickHandler(23, (p, slot, item, action) -> {
                         BlockStorage.addBlockInfo(b, "filter-type", "whitelist");
@@ -58,8 +57,7 @@ public class ImportBus extends SlimefunItem {
                         newInstance(menu, b);
                         return false;
                     });
-                }
-                else {
+                } else {
                     menu.replaceExistingItem(41, new CustomItem(Material.GOLDEN_SWORD, "&7包括 子ID/耐久度: &2\u2714", "", "&e> 點擊以切換是否包含子ID/耐久度"));
                     menu.addMenuClickHandler(41, (p, slot, item, action) -> {
                         BlockStorage.addBlockInfo(b, "filter-durability", "false");
@@ -75,8 +73,7 @@ public class ImportBus extends SlimefunItem {
                         newInstance(menu, b);
                         return false;
                     });
-                }
-                else {
+                } else {
                     menu.replaceExistingItem(32, new CustomItem(Material.MAP, "&7包括 Lore: &4\u2718", "", "&e> 點擊以切換是否包含Lore"));
                     menu.addMenuClickHandler(32, (p, slot, item, action) -> {
                         BlockStorage.addBlockInfo(b, "filter-lore", "true");
@@ -88,7 +85,8 @@ public class ImportBus extends SlimefunItem {
 
             @Override
             public boolean canOpen(Block b, Player p) {
-                return BlockStorage.getLocationInfo(b.getLocation(), "owner").equals(p.getUniqueId().toString()) || p.hasPermission("slimefun.cargo.bypass");
+                String owner = BlockStorage.getLocationInfo(b.getLocation(), "owner");
+                return (owner != null && owner.equals(p.getUniqueId().toString())) || p.hasPermission("slimefun.cargo.bypass");
             }
 
             @Override
@@ -97,23 +95,21 @@ public class ImportBus extends SlimefunItem {
             }
         };
 
-        registerBlockHandler(getID(), new SlimefunBlockHandler() {
+        registerBlockHandler(getID(), (p, b, tool, reason) -> {
+            BlockStorage.getInventory(b).dropItems(b.getLocation(), getInputSlots());
+            return true;
+        });
+
+        addItemHandler(new BlockPlaceHandler(false) {
 
             @Override
-            public void onPlace(Player p, Block b, SlimefunItem item) {
-                BlockStorage.addBlockInfo(b, "owner", p.getUniqueId().toString());
+            public void onPlayerPlace(BlockPlaceEvent e) {
+                Block b = e.getBlock();
+                BlockStorage.addBlockInfo(b, "owner", e.getPlayer().getUniqueId().toString());
                 BlockStorage.addBlockInfo(b, "index", "0");
                 BlockStorage.addBlockInfo(b, "filter-type", "whitelist");
                 BlockStorage.addBlockInfo(b, "filter-lore", "true");
                 BlockStorage.addBlockInfo(b, "filter-durability", "false");
-            }
-
-            @Override
-            public boolean onBreak(Player p, Block b, SlimefunItem item, UnregisterReason reason) {
-                for (int slot : getInputSlots()) {
-                    if (BlockStorage.getInventory(b).getItemInSlot(slot) != null) b.getWorld().dropItemNaturally(b.getLocation(), BlockStorage.getInventory(b).getItemInSlot(slot));
-                }
-                return true;
             }
         });
     }
