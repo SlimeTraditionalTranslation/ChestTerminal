@@ -2,8 +2,10 @@ name: ChestTerminal
 version: ${project.version}
 author: TheBusyBiscuit
 description: 黏液科技附加 箱子終端 繁體翻譯版.
-depend: [Slimefun]
+website: https://github.com/TheBusyBiscuit/ChestTerminal
 
-api-version: 1.13
-
+api-version: 1.14
 main: io.github.thebusybiscuit.chestterminal.ChestTerminal
+
+depend:
+- Slimefun
