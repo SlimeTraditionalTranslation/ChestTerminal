@@ -14,19 +14,33 @@ import io.github.thebusybiscuit.chestterminal.items.MilkyQuartz;
 import io.github.thebusybiscuit.chestterminal.items.WirelessTerminal;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
-import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.Item.CustomItem;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
+//import me.mrCookieSlime.Slimefun.cscorelib2.config.Config;
+import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
+//import me.mrCookieSlime.Slimefun.cscorelib2.updater.GitHubBuildsUpdater;
+//import me.mrCookieSlime.Slimefun.cscorelib2.updater.Updater;
 
 public class ChestTerminal extends JavaPlugin implements Listener, SlimefunAddon {
 	
 	@Override
 	public void onEnable() {
+		//Config cfg = new Config(this);
 		
 		// Setting up bStats
 		//new Metrics(this, 5503);
+
+		// Setting up the Auto-Updater
+		//Updater updater = null;
+
+		/*if (getDescription().getVersion().startsWith("DEV - ")) {
+			// If we are using a development build, we want to switch to our custom 
+			updater = new GitHubBuildsUpdater(this, getFile(), "TheBusyBiscuit/ChestTerminal/master");
+		}*/
+
+		//if (updater != null && cfg.getBoolean("options.auto-update")) updater.start();
 
 		SlimefunItemStack milkyQuartz = new SlimefunItemStack("MILKY_QUARTZ", Material.QUARTZ, "&f乳色石英");
 		SlimefunItemStack ctPanel = new SlimefunItemStack("CT_PANEL", "7a44ff3a5f49c69cab676bad8d98a063fa78cfa61916fdef3e267557fec18283", "&3CT照明面板", "&7製作零件");
